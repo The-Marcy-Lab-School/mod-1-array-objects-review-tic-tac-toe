@@ -21,21 +21,21 @@ const main = () => {
   };
 
   // Play the game as long as there is no winner yet and spaces remain in the grid
-  while (!game.winner && game.spacesRemaining > 0) {
+  while (game.spacesRemaining > 0 && !game.winner) {
     // Print the grid at the start of each turn
     printGrid(game);
 
     // Get the current player's next move
 
-    // TODO: Refactor this to use destructuring
+    // TODO: Simplify this code.
     const nextMoves = getNextMove(game);
     const row = nextMoves[0];
-    const col = nextMoves[1];
+    const column = nextMoves[1];
 
-    // if the move is valid...
-    if (validateInput(game, row, col)) {
+    // if the move is valid (they chose an unoccupied space)...
+    if (validateInput(game, row, column)) {
       // ... place that "piece" in the grid, check for a win, and go to the next player
-      playPieceAndCheckForWin(game, row, col);
+      playPieceAndCheckForWin(game, row, column);
     }
   }
 

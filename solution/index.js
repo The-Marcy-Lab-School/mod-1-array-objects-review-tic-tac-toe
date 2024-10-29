@@ -21,17 +21,17 @@ const main = () => {
   };
 
   // Play the game as long as there is no winner yet and spaces remain in the grid
-  while (!game.winner && game.spacesRemaining > 0) {
+  while (game.spacesRemaining > 0 && !game.winner) {
     // Print the grid at the start of each turn
     printGrid(game);
 
     // Get the current player's next move
-    const [row, col] = getNextMove(game);
+    const [row, column] = getNextMove(game);
 
     // if the move is valid...
-    if (validateInput(game, row, col)) {
+    if (validateInput(game, row, column)) {
       // ... place that "piece" in the grid, check for a win, and go to the next player
-      playPieceAndCheckForWin(game, row, col);
+      playPieceAndCheckForWin(game, row, column);
     }
   }
 

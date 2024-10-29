@@ -10,8 +10,8 @@ const printGrid = (game) => {
 const getNextMove = (game) => {
   console.log("\nIt's " + game.turn + "'s turn. \n")
 
-  const column = prompt("Enter the column of your choice (1, 2, or 3): ");
   const row = prompt("Enter the row of your choice (1, 2, or 3): ");
+  const column = prompt("Enter the column of your choice (1, 2, or 3): ");
 
   // returning in array/object is the only way we can return both of these values
   return [row, column];
@@ -39,7 +39,7 @@ const validateInput = (game, row, col) => {
 const checkForWin = (game) => {
   /* 
   - Each value in this array is an array of objects.
-  - Each array represents a set of positions that form a line of 3 (there are winning 8 combinations)
+  - Each array represents a set of positions that form a line of 3 (there are 8 combinations)
   */
   const winningCombinations = [
     [{ row: 1, column: 1 }, { row: 1, column: 2 }, { row: 1, column: 3 }], // row 1 win
@@ -52,27 +52,18 @@ const checkForWin = (game) => {
     [{ row: 3, column: 1 }, { row: 2, column: 2 }, { row: 1, column: 3 }], // SW -> NE win
   ];
 
-  // TODO: Complete this function
-
-  // For each possible winning combination...
-
-  // get the three positions
-
-  // get the value ('X' or 'O') at each position in the grid
-
-  // if they are all the same and match the most recent piece...
-
-  // the player who placed the last piece is the winner!
-
-  // otherwise, they aren't all the same, so go to the next combination
-
-  // If we get to the end, no winner was found
+  // TODO: Assign `game.winner = game.turn` if a winning combination was completed.
 };
 
 // Places the current player's piece on the board and updates game variables
 const playPieceAndCheckForWin = (game, row, col) => {
+  // Place the piece
   game.grid[row][col] = game.turn;
+
+  // Check for a win
   checkForWin(game);
+
+  // Go to the next players turn
   game.spacesRemaining--;
   game.turn = game.turn === 'X' ? 'O' : 'X';
 };

@@ -10,14 +10,15 @@ const printGrid = ({ grid }) => {
   grid.forEach(row => {
     console.log(row.join(' '));
   });
+  // grid.map(row => row.join(' ')).forEach((val) => console.log(val))
 };
 
 // Use prompt to get the current player's inputs
 const getNextMove = (game) => {
   console.log("\nIt's " + game.turn + "'s turn. \n")
 
-  const column = prompt("Enter the column of your choice (1, 2, or 3): ");
   const row = prompt("Enter the row of your choice (1, 2, or 3): ");
+  const column = prompt("Enter the column of your choice (1, 2, or 3): ");
 
   return [row, column];
 };
